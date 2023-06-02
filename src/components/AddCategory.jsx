@@ -1,13 +1,8 @@
 import { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 
-const data = [{
-  id: uuid(),
-  name: "Matrix"
-}]
-
 function AddCategory({onCategory}) {
-  const [categories, setCategories] = useState(data)
+  const [categories, setCategories] = useState([])
   const [value,setValue] = useState("a")
 
   useEffect(() => {

@@ -1,9 +1,8 @@
-import result from '../mocks/search.json'
 import { useEffect, useState } from 'react';
 
 // eslint-disable-next-line react/prop-types
-export default function GiphyResults({name = "Matrix"}) {
-  const [data, setData] = useState(result)
+export default function GiphyResults({name = "naruto"}) {
+  const [data, setData] = useState([])
   const api_key="MgXdOJyQCSPu0A1p3RYc9wq11AfQ5InM";
 
   useEffect(() => {
@@ -13,17 +12,19 @@ export default function GiphyResults({name = "Matrix"}) {
       console.log(name)
     }
     handle()
-  },[name]
+  },[]
   )
   return <>
     <div className='results'>
-      {data.pagination.count === 0 ? <span>{"Search not found"}</span> :
+      {
+      data.length!=0 ? 
+      data.pagination.count === 0 ? <span>{"Search not found"}</span> :
       data.data.map((item) =>
         <div key={item.id}>
           <p>{item.title}</p>
           <img src={item.images.fixed_width.url} alt={item.title}/>
         </div>
-      )}
+      ) : <p></p>}
     </div>
   </>
   

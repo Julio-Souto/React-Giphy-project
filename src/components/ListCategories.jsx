@@ -7,6 +7,7 @@ export default function ListCategories({ categories = [] }){
   const [show, setShow] = useState(true)
 
   return <>
+      <div className='container'>
       {categories.map((category) =>  
         <div key={category.id}>
           <h2 onClick={() => setShow(currentShow => !currentShow)}>{category.name} 
@@ -14,6 +15,7 @@ export default function ListCategories({ categories = [] }){
           {show ? <GiphyResults name={category.name}/> : null}
         </div>
       )}
+      </div>
   </>
 } 
 

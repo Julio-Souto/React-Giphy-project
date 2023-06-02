@@ -40,3 +40,8 @@ input{
   transform: rotate(-135deg);
   -webkit-transform: rotate(-135deg);
 }
+
+.container{
+  display: flex;
+  flex-direction: column-reverse;
+}

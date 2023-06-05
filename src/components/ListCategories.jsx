@@ -4,15 +4,26 @@ import { useState } from 'react'
 
 
 export default function ListCategories({ categories = [] }){
-  const [show, setShow] = useState(true)
+  const [mostrar, setMostrar] = useState([])
+  let show = structuredClone(mostrar);
 
+  const add = (index) => {
+    if(typeof(show[index])==='undefined')
+      show.push(true)
+  }
+
+  const changeShow = (index) => {
+    show[index]= !mostrar[index]
+    setMostrar(structuredClone(show))
+  }
   return <>
       <div className='container'>
-      {categories.map((category) =>  
+      {categories.map((category,index) =>  
         <div key={category.id}>
-          <h2 onClick={() => setShow(currentShow => !currentShow)}>{category.name} 
-          <i className={show ? "arrow down": "arrow up"}></i></h2>
-          {show ? <GiphyResults name={category.name}/> : null}
+          {add(index)}
+          <h2 onClick={() => {changeShow(index)}}>{category.name} 
+          <i className={show[index] ? "arrow down": "arrow up"}></i></h2>
+          {show[index] ? <GiphyResults name={category.name}/> : null}
         </div>
       )}
       </div>

@@ -38,14 +38,15 @@ export default function GiphyResults({name = "naruto"}) {
         </div>
       )
       : <p></p>}
+    </div>
       {
-      data.length!=0 ?
-      <div className='pagination'>
+      data.length!=0 ? 
+      data.pagination.count === 0 ? <p></p> :
+      <div className='mt-2 text-center pagination'>
         <button onClick={previous}>Previous</button>
-        <p>Page {Math.round(offset/15)+1} from {pages = Math.round(data.pagination.total_count/data.pagination.count/15)}</p>
+        <p>Page {Math.ceil(offset/15)+1} from {pages = Math.ceil(data.pagination.total_count/data.pagination.count/15)}</p>
         <button onClick={next}>Next</button>
       </div> : <p></p>}
-    </div>
   </>
   
 }

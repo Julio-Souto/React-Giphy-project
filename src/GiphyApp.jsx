@@ -12,10 +12,12 @@ function GiphyApp({ title }) {
 
   return (
     <>
-      <h1>{title}</h1>
-      {/* <Button handle={setCount} counter={count}/>
-      <Button handle={setCount} counter={count}/> */}
-      <AddCategory onCategory={setCategories}/>
+      <div className='text-center'>
+        <h1>{title}</h1>
+        {/* <Button handle={setCount} counter={count}/>
+        <Button handle={setCount} counter={count}/> */}
+        <AddCategory onCategory={setCategories}/>
+      </div>
       <ListCategories categories={categories}/>
       {/* <GiphyResults /> */}
     </>

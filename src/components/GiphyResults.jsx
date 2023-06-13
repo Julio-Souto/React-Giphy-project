@@ -22,7 +22,7 @@ export default function GiphyResults({name = "naruto"}) {
 
   }
   const next = () => {
-    if(offset<pages)
+    if((offset+1)<pages)
       setOffset(offset+15);
 
   }

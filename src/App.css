@@ -23,7 +23,7 @@ input{
   margin: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 2em;
+  gap: 1em;
 }
 
 .pagination{

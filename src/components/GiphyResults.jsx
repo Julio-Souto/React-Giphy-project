@@ -5,10 +5,11 @@ export default function GiphyResults({name = "naruto"}) {
   const [data, setData] = useState([])
   const [offset, setOffset] = useState(0)
   const api_key="MgXdOJyQCSPu0A1p3RYc9wq11AfQ5InM";
+  const limit = 16
   let pages = 0;
   useEffect(() => {
     const handle = async() => {
-      const response = await fetch("https://api.giphy.com/v1/gifs/search?api_key="+api_key+"&q="+name+"&limit=15&offset="+offset)
+      const response = await fetch("https://api.giphy.com/v1/gifs/search?api_key="+api_key+"&q="+name+"&limit="+limit+"&offset="+offset)
       setData(await response.json())
       console.log(name)
     }
@@ -18,12 +19,12 @@ export default function GiphyResults({name = "naruto"}) {
 
   const previous = () => {
     if(offset>0)
-      setOffset(offset-15);
+      setOffset(offset-limit);
 
   }
   const next = () => {
     if((offset+1)<pages)
-      setOffset(offset+15);
+      setOffset(offset+limit);
 
   }
   return <>
@@ -44,7 +45,7 @@ export default function GiphyResults({name = "naruto"}) {
       data.pagination.count === 0 ? <p></p> :
       <div className='mt-2 text-center pagination'>
         <button onClick={previous}>Previous</button>
-        <p>Page {Math.ceil(offset/15)+1} from {pages = Math.ceil(data.pagination.total_count/data.pagination.count/15)}</p>
+        <p>Page {Math.ceil(offset/limit)+1} from {pages = Math.ceil(data.pagination.total_count/data.pagination.count/limit)}</p>
         <button onClick={next}>Next</button>
       </div> : <p></p>}
   </>

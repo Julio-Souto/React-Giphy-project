@@ -23,7 +23,6 @@ input{
   margin: 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
-  align-items: center;
 }
 
 .pagination{
@@ -59,4 +58,12 @@ input{
 .container{
   display: flex;
   flex-direction: column-reverse;
+}
+
+@media only screen and (max-width: 600px) {
+  .results{
+    justify-content: center;
+    text-align: center;
+  }
+  
 }
